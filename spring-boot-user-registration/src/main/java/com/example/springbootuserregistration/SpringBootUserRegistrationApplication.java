@@ -9,5 +9,4 @@ public class SpringBootUserRegistrationApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootUserRegistrationApplication.class, args);
 	}
-
 }

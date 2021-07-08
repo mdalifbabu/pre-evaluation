@@ -2,6 +2,7 @@ package com.example.springbootuserregistration.controllers;
 
 import java.util.ArrayList;
 
+
 import java.util.List;
 import java.util.Optional;
 
@@ -59,7 +60,19 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+    
+    @GetMapping("/users/{firstName}")
+    public ResponseEntity<User> getUserByFirstName(@PathVariable("firstName") String firstName) {
+        
+        	Optional<User> userData = userRepository.findByFirstNameContaining(firstName);
 
+        	if (userData.isPresent()) {
+                return new ResponseEntity<>(userData.get(), HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+    }
+    
     @PostMapping("/users")
     public ResponseEntity<User> createUser(@RequestBody User user) {
         try {
@@ -142,20 +155,5 @@ public class UserController {
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
     }
-
-/*    @GetMapping("/users/published")
-    public ResponseEntity<List<User>> findByPublished() {
-        try {
-            List<User> users = userRepository.findByPublished(true);
-
-            if (users.isEmpty()) {
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-            }
-            return new ResponseEntity<>(users, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }*/
 }

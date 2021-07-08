@@ -1,7 +1,7 @@
 package com.example.springbootuserregistration.repository;
 
 import java.util.List;
-
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -12,7 +12,7 @@ public interface UserRepository extends JpaRepository<User, Long>{
 	List<User> findByRegistrationIdContaining(String registrationId);
 	List<User> findByInstitutionIdContaining(String institutionId);
 	List<User> findByUserIdContaining(String userId);
-	List<User> findByFirstNameContaining(String firstName);
+	Optional<User> findByFirstNameContaining(String firstName);
 	List<User> findByLastNameContaining(String lastName);
 	List<User> findByDateOfBirthContaining(String dateOfBirth);
 	List<User> findByNidContaining(String nid);

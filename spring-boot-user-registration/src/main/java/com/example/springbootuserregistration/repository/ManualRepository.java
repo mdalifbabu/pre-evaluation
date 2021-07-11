@@ -6,9 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.springbootuserregistration.models.User;
 
-
-public interface UserRepository extends JpaRepository<User, Long>{
-	List<User> findByUserIdContaining(String userId);
-	List<User> findByFirstNameContaining(String firstName);
+public interface ManualRepository extends JpaRepository<User, Long>{
+	
 }
-

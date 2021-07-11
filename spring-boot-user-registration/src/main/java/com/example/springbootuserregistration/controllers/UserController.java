@@ -2,7 +2,6 @@ package com.example.springbootuserregistration.controllers;
 
 import java.util.ArrayList;
 
-
 import java.util.List;
 import java.util.Optional;
 
@@ -21,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.springbootuserregistration.models.User;
+import com.example.springbootuserregistration.repository.ManualRepository;
 import com.example.springbootuserregistration.repository.UserRepository;
 
 @CrossOrigin
@@ -29,6 +29,7 @@ import com.example.springbootuserregistration.repository.UserRepository;
 public class UserController {
 	@Autowired
 	UserRepository userRepository;
+	ManualRepository manualRepository;
 	
 	@GetMapping("/users")
     public ResponseEntity<List<User>> getAllUsers(@RequestParam(required = false) String userId) {
@@ -61,17 +62,20 @@ public class UserController {
         }
     }
     
-    @GetMapping("/users/{firstName}")
-    public ResponseEntity<User> getUserByFirstName(@PathVariable("firstName") String firstName) {
+    @GetMapping("/users/name/{firstName}")
+    public ResponseEntity<List<User>>getUserByFirstName(@PathVariable("firstName") String firstName) {
+   
+    	List<User> users = new ArrayList<User>();
+        userRepository.findByFirstNameContaining(firstName).forEach(users::add);
         
-        	Optional<User> userData = userRepository.findByFirstNameContaining(firstName);
-
-        	if (userData.isPresent()) {
-                return new ResponseEntity<>(userData.get(), HttpStatus.OK);
-            } else {
-                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-            }
+        if (!users.isEmpty()) {
+            return new ResponseEntity<>(users, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
+
+
     
     @PostMapping("/users")
     public ResponseEntity<User> createUser(@RequestBody User user) {

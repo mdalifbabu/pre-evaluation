@@ -1,0 +1,106 @@
+.header{
+    position: absolute;
+    box-shadow: 0 10px 20px 1.5px rgba(0,0,0,0.19), 0 6px 6px 1.5px rgba(0,0,0,0.23);
+    left: 210px;
+    top: 55px;
+    width: 1150px;
+    height: 55px;
+    border-radius: 10px;
+    background-color: #bdcbe2;
+}
+
+.header .left-part{
+    float: left;
+    margin-top: 5px;
+    margin-left: 10px;
+    border-left: .4em solid #1880c9;
+    padding: 10px 10px;
+
+    font-size: 20px;
+    font-weight: 600;
+    color: #2a4b62;
+    width: 30%;
+}
+
+.header .right-part{
+    float: right;
+    width: 40%;
+    border-radius: 50px 50px 50px 50px;
+    background-color: #2e8b94;
+    padding: 10px 5px 10px 5px;
+    margin-right: -5px;
+    margin-left: 10px;
+    text-align: center;
+}
+
+.header .right-part .left{
+    float: left;
+    width: 40%;
+}
+
+.header .right-part .left span{
+    float: left;
+    font-size: 25px;
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+.header .right-part .left #home
+{
+    float: left;
+    height: 30px;
+    width: 30px;
+}
+
+.header .right-part .left #selector{
+    height: 30px;
+    width: 30px;
+
+}
+
+
+.header .right-part .right{
+    float: right;
+    width: 60%;
+}
+
+.header .right-part .right input{
+    border: none;
+    padding: 10px;
+    outline-width: 0;
+}
+
+.header .right-part .right #search{
+    float: right;
+    height: 30px;
+    width: 30px;
+    margin-left: -10px;
+    margin-right: 10px;
+}
+
+.table{
+    position: absolute;
+    box-shadow: 0 10px 20px 1.5px rgba(0,0,0,0.19), 0 6px 6px 1.5px rgba(0,0,0,0.23);
+    left: 210px;
+    top: 115px;
+    width: 1150px;
+    height: 450px;
+    border-radius: 10px;
+}
+
+th, td{
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+}
+
+.table-data{
+    margin-left: 20px;
+    padding: 100px;
+}
+
+.table .upper-button button{
+    float: right;
+    padding: 10px;
+    margin: 10px;
+}
